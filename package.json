@@ -1,0 +1,19 @@
+{
+  "name": "overview-api",
+  "version": "1.0.0",
+  "description": "The Overview's API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdc-cherry/overview-api.git"
+  },
+  "author": "MD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sdc-cherry/overview-api/issues"
+  },
+  "homepage": "https://github.com/sdc-cherry/overview-api#readme"
+}
