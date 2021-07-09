@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sdc-cherry/overview-api/issues"
   },
-  "homepage": "https://github.com/sdc-cherry/overview-api#readme"
+  "homepage": "https://github.com/sdc-cherry/overview-api#readme",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
 }
