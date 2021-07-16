@@ -18,7 +18,8 @@ app.get('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(res.rows);
+      console.log('field: ', res.fields);
+      console.log('rows: ', res.rows);
     }
     client.end()
   })
