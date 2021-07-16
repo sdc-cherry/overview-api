@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sdc-cherry/overview-api#readme",
   "dependencies": {
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "pg": "^8.6.0"
   }
 }
