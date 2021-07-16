@@ -2,6 +2,8 @@ const express = require('express');
 const { Pool, Client } = require('pg');
 const config = require('./config.js');
 
+const app = express();
+
 const client = new Client({
   user: 'michaelduckworth',
   database: 'test',
@@ -11,9 +13,8 @@ const client = new Client({
 
 client.connect();
 
-const app = express();
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   client.query('SELECT * FROM accounts', (err, res) => {
     if (err) {
       console.log(err);
