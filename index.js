@@ -15,7 +15,8 @@ client.connect();
 
 
 app.get('/', (req, res, next) => {
-  client.query('SELECT * FROM cart', (err, res) => {
+  let query = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
+  client.query(query, (err, res) => {
     if (err) {
       console.log(err);
     } else {
