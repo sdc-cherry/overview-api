@@ -6,3 +6,5 @@ CREATE TABLE cart(
 );
 
 \copy cart from 'https://doc-0g-4g-docs.googleusercontent.com/docs/securesc/25u8q2mtsbovcghg9ta9ls1356qsop44/vh4thvdlb3u71lhh3deqkuqn7801mf0n/1626491550000/18150978551945343129/12002092640105433961/1krCTdha95Lly8hkNEP_6y1AOwrQ18TRQ?e=download&authuser=0&nonce=rqf2qfn8p5vli&user=12002092640105433961&hash=im5svma8ordkdfbddheb9l0tvbk29edt' delimiter ',' csv header;
+
+\psql -d sdc_test -c "\copy cart from '~/Documents/HR/sdc/overview-api/raw/cart.csv' delimiter ',' csv header;"

@@ -6,7 +6,7 @@ const app = express();
 
 const client = new Client({
   user: 'michaelduckworth',
-  database: 'test',
+  database: 'sdc_test',
   password: config.DBTOKEN,
   port: 5432,
 })
@@ -15,7 +15,7 @@ client.connect();
 
 
 app.get('/', (req, res, next) => {
-  client.query('SELECT * FROM accounts', (err, res) => {
+  client.query('SELECT * FROM cart', (err, res) => {
     if (err) {
       console.log(err);
     } else {
