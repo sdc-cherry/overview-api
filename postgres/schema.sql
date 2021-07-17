@@ -9,12 +9,12 @@ DROP TABLE IF EXISTS related;
 
 -- CREATE SCHEMA sdc
 CREATE TABLE products (
-  id SMALLINT PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   name VARCHAR(100),
   slogan VARCHAR(255),
   description TEXT,
   category VARCHAR(100),
-  default_price SMALLINT
+  default_price INTEGER
 );
 
 CREATE TABLE features (
@@ -29,8 +29,8 @@ CREATE TABLE styles (
   id SMALLINT PRIMARY KEY,
   productId SMALLINT,
   name VARCHAR(75),
-  sale_price SMALLINT,
-  original_price SMALLINT,
+  sale_price INTEGER,
+  original_price INTEGER,
   default_style BOOLEAN,
   CONSTRAINT fk_style FOREIGN KEY(productId) REFERENCES products(id) ON DELETE CASCADE
 );
