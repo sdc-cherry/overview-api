@@ -5,8 +5,8 @@ const config = require('./config.js');
 const app = express();
 
 const client = new Client({
-  user: 'michaelduckworth',
-  database: 'sdc_test',
+  user: config.DBUSER,
+  database: config.DBNAME,
   password: config.DBTOKEN,
   port: 5432,
 })

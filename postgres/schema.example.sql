@@ -23,6 +23,5 @@ INSERT INTO sess(session_id, session_name)
     (4321, 'session 2'),
     (1111, 'session 3');
 
-SELECT * FROM sess;
 --  psql -U your_user -d your_db -f filename.sql
 --  psql -d sdc_test -f schema.sql [from postgres folder - put into an npm script ? :)]
