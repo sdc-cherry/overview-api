@@ -3,5 +3,5 @@ The Overview's API
 
 
 ### Setup
-    <!-- psql -d test -f db.sql -->
-    <!-- psql -d sdc_test -f schema.sql -->
+    <!-- psql -d postgres -f db.sql -->
+    <!-- psql -d sdc -f schema.sql -->
