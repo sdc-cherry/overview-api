@@ -1,8 +1,5 @@
-const express = require('express');
 const { Pool, Client } = require('pg');
-const config = require('./config.js');
-
-const app = express();
+const config = require('../config.js');
 
 const client = new Client({
   user: config.DBUSER,
@@ -14,21 +11,17 @@ const client = new Client({
 client.connect();
 
 
-app.get('/', (req, res, next) => {
+const test = (cb) => {
   let query = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
   client.query(query, (err, res) => {
     if (err) {
-      console.log(err);
+      cb(err, null);
     } else {
-      console.log('field: ', res.fields);
-      console.log('rows: ', res.rows);
+      cb(null, res);
     }
-    client.end()
+    //client.end()
   })
-})
 
+}
 
-
-app.listen(3000, function () {
-  console.log('Server is running on port 3000');
-});
+module.exports.test = test;
