@@ -5,14 +5,13 @@ const app = express();
 
 
 app.get('/', (req, res, next) => {
-  db.test((err,res) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('field: ', res.fields);
+  db.test()
+    .then(res => {
       console.log('rows: ', res.rows);
-    }
-  });
+    })
+    .catch(err => {
+      console.log(err);
+    })
 })
 
 

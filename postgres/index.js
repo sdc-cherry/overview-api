@@ -11,22 +11,8 @@ const client = new Client({
 client.connect();
 
 
-const test = (cb) => {
-  let query = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
-  // client.query(query, (err, res) => {
-  //   if (err) {
-  //     cb(err, null);
-  //   } else {
-  //     cb(null, res);
-  //   }
-  client.query(query)
-    .then(res => {
-      cb(null, res);
-    })
-    .catch(err => {
-      cb(err, null);
-    })
+let query = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
 
-};
+const test = () => client.query(query);
 
 module.exports.test = test;
