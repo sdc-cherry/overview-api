@@ -4,7 +4,7 @@
   "description": "The Overview's API",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest --forceExit",
     "start": "nodemon ./server/index.js",
     "prepare": "husky install"
   },
