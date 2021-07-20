@@ -26,19 +26,25 @@ app.get('/products', (req, res) => {
    *
    * Response status: 200 OK
    */
+
+  // Check for invalid parameters
+  let params = Object.keys(req.query).sort();
+  if (params.length > 0 && (params[0] !== 'count' || params[1] !== 'page')) {
+    res.sendStatus(400);
+    res.end();
+  }
+
   //  Grab parameters from req, revert to default
-  // Calculate number of results based on parameters (page * count)
-  // Call db function to get products, based on parameters
   let pages = req.query.page ? req.query.page : 1;
   let count = req.query.count ? req.query.count : 5;
+  // Calculate number of results based on parameters (page * count)
   let numResults = pages * count; // Try req.params if req.query doesn't work
-
+  // Call db function to get products, based on parameters
+  // Send back array of objects with products properties
   db.list(numResults)
     .then(results => res.status(200).send(results.rows))
     .catch(err => res.status(502).send(err));
 
-  // Send back array of objects with products properties
-  // res.send('products');
 })
 
 // Product Information
