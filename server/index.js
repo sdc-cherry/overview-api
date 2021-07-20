@@ -1,8 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const db = require('../postgres/index');
+
 const app = express();
 
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 // Test query
 // app.get('/', (req, res, next) => {
 //   db.test()
@@ -23,7 +26,15 @@ app.get('/products', (req, res) => {
    *
    * Response status: 200 OK
    */
-  res.send('products');
+  //  Grab parameters from req, revert to default
+  // Calculate number of results based on parameters (page * count)
+  // Call db function to get products, based on parameters
+  db.list(5)
+    .then(results => res.send(results.rows))
+    .catch(err => console.log(err));
+
+  // Send back array of objects with products properties
+  // res.send('products');
 })
 
 // Product Information

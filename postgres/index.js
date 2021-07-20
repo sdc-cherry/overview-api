@@ -17,8 +17,13 @@ const pool = new Pool({
 
 // client.connect();
 
-let query = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
+let testQuery = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
 
-const test = () => pool.query(query);
+const test = () => pool.query(testQuery);
 
+const list = (numResults) => {
+  let query = `SELECT * FROM products LIMIT ${numResults}`;
+  return pool.query(query);
+}
 module.exports.test = test;
+module.exports.list = list;
