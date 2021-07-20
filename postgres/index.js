@@ -13,6 +13,12 @@ client.connect();
 
 let query = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.session_id';
 
-const test = () => client.query(query);
+const test = () => {
+  return client.query(query)
+    .then(res => {
+      client.end();
+      return res;
+    });
+}
 
 module.exports.test = test;
