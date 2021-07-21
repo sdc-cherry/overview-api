@@ -25,6 +25,7 @@ const list = (numResults) => {
   let query = `SELECT * FROM products LIMIT ${numResults}`;
   return pool.query(query);
 }
+
 const info = id => {
   return pool.query(`SELECT * FROM products WHERE id=${id}`)
     .then(result1 => {
@@ -39,6 +40,12 @@ const info = id => {
               })
     }) ;
 }
+
+const related = id => {
+  return pool.query(`SELECT related_product_id FROM related WHERE current_product_id=${id}`);
+}
+
 module.exports.test = test;
 module.exports.list = list;
 module.exports.info = info;
+module.exports.related = related;

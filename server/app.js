@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const _ = require('lodash');
 const db = require('../postgres/index');
 
 const app = express();
@@ -19,13 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // List Products
 app.get('/products', (req, res) => {
-  /**
-   * Parameters:
-   *    page (integer) - Selects the page of results to return. Default 1.
-   *    count (integer) - Specifies how many results per page to return. Default 5.
-   *
-   * Response status: 200 OK
-   */
 
   // Check for invalid parameters
   let params = Object.keys(req.query).sort();
@@ -49,13 +43,6 @@ app.get('/products', (req, res) => {
 
 // Product Information
 app.get('/products/:product_id', (req, res) => {
-  /**
-   * Parameters:
-   *    product_id (integer) - Required ID of the Product requested
-   *
-   * Response status: 200 OK
-   */
-
   // Error response for non-integer value
   db.info(req.params.product_id)
     .then(result => res.status(200).send(result))
@@ -75,13 +62,11 @@ app.get('/products/:product_id/styles', (req, res) => {
 
 // Related Products
 app.get('/products/:product_id/related', (req, res) => {
-  /**
-   * Parameters:
-   *    product_id (integer) - Required ID of the Product requested
-   *
-   * Response status: 200 OK
-   */
-  res.send('related');
+
+  db.related(req.params.product_id)
+  .then(result => res.status(200).send(_.map(result.rows, 'related_product_id')))
+  .catch(err => res.status(502).send(err));
+
 })
 
 module.exports = app;
