@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1626836255372" clover="3.2.0">
-  <project timestamp="1626836255372" name="All files">
-    <metrics statements="44" coveredstatements="40" conditionals="9" coveredconditionals="9" methods="13" coveredmethods="8" elements="66" coveredelements="57" complexity="0" loc="44" ncloc="44" packages="3" files="3" classes="3"/>
+<coverage generated="1626837960300" clover="3.2.0">
+  <project timestamp="1626837960300" name="All files">
+    <metrics statements="47" coveredstatements="41" conditionals="9" coveredconditionals="9" methods="16" coveredmethods="8" elements="72" coveredelements="58" complexity="0" loc="47" ncloc="47" packages="3" files="3" classes="3"/>
     <package name="overview-api">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="config.js" path="/Users/michaelduckworth/Documents/HR/sdc/overview-api/config.js">
@@ -10,58 +10,61 @@
       </file>
     </package>
     <package name="overview-api.postgres">
-      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
       <file name="index.js" path="/Users/michaelduckworth/Documents/HR/sdc/overview-api/postgres/index.js">
-        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
         <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
         <line num="26" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="42" count="2" type="stmt"/>
-        <line num="43" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
         <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
       </file>
     </package>
     <package name="overview-api.server">
-      <metrics statements="25" coveredstatements="21" conditionals="9" coveredconditionals="9" methods="8" coveredmethods="4"/>
+      <metrics statements="28" coveredstatements="22" conditionals="9" coveredconditionals="9" methods="10" coveredmethods="4"/>
       <file name="app.js" path="/Users/michaelduckworth/Documents/HR/sdc/overview-api/server/app.js">
-        <metrics statements="25" coveredstatements="21" conditionals="9" coveredconditionals="9" methods="8" coveredmethods="4"/>
+        <metrics statements="28" coveredstatements="22" conditionals="9" coveredconditionals="9" methods="10" coveredmethods="4"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="32" count="3" type="cond" truecount="5" falsecount="0"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="37" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="40" count="2" type="stmt"/>
-        <line num="43" count="2" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="60" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="77" count="2" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="87" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="cond" truecount="5" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
       </file>
     </package>
   </project>
