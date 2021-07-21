@@ -25,5 +25,20 @@ const list = (numResults) => {
   let query = `SELECT * FROM products LIMIT ${numResults}`;
   return pool.query(query);
 }
+const info = id => {
+  return pool.query(`SELECT * FROM products WHERE id=${id}`)
+    .then(result1 => {
+      return pool.query(`SELECT feature, value FROM features WHERE product_id=${id}`)
+              .then(result2 => {
+                // console.log('first: ', result1.rows[0]);
+                // console.log('second: ', result2.rows);
+                let product = result1.rows[0];
+                product.features = result2.rows;
+                console.log('final obj: ', product);
+                return product;
+              })
+    }) ;
+}
 module.exports.test = test;
 module.exports.list = list;
+module.exports.info = info;

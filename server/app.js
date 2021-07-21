@@ -55,7 +55,11 @@ app.get('/products/:product_id', (req, res) => {
    *
    * Response status: 200 OK
    */
-  res.send('information');
+
+  // Error response for non-integer value
+  db.info(req.params.product_id)
+    .then(result => res.status(200).send(result))
+    .catch(err => res.status(502).send(err));
 })
 
 // Product Styles
