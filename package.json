@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --forceExit",
     "start": "nodemon ./server/index.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "coverage": "jest --forceExit --coverage"
   },
   "repository": {
     "type": "git",
