@@ -21,10 +21,7 @@ let testQuery = 'SELECT * FROM cart LEFT JOIN sess ON cart.session_id=sess.sessi
 
 const test = () => pool.query(testQuery);
 
-const list = (numResults) => {
-  let query = `SELECT * FROM products LIMIT ${numResults}`;
-  return pool.query(query);
-}
+const list = numResults => pool.query(`SELECT * FROM products LIMIT ${numResults}`);
 
 const info = id => {
   return pool.query(`SELECT * FROM products WHERE id=${id}`)
@@ -41,9 +38,8 @@ const info = id => {
     }) ;
 }
 
-const related = id => {
-  return pool.query(`SELECT related_product_id FROM related WHERE current_product_id=${id}`);
-}
+const related = id => pool.query(`SELECT related_product_id FROM related WHERE current_product_id=${id}`);
+
 
 module.exports.test = test;
 module.exports.list = list;
