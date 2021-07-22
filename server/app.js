@@ -7,16 +7,6 @@ const app = express();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-// Test query
-// app.get('/', (req, res, next) => {
-//   db.test()
-//     .then(res => {
-//       console.log('rows: ', res.rows);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     })
-// })
 
 // List Products
 app.get('/products', (req, res) => {
@@ -47,17 +37,19 @@ app.get('/products/:product_id', (req, res) => {
   db.info(req.params.product_id)
     .then(result => res.status(200).send(result))
     .catch(err => res.status(502).send(err));
-})
+  })
 
-// Product Styles
+  // Product Styles
 app.get('/products/:product_id/styles', (req, res) => {
-  /**
-   * Parameters:
-   *    product_id (integer) - Required ID of the Product requested
-   *
-   * Response status: 200 OK
-   */
-  res.send('styles');
+    /**
+     * Parameters:
+     *    product_id (integer) - Required ID of the Product requested
+     *
+     * Response status: 200 OK
+     */
+  db.styles(req.params.product_id)
+    .then(result => res.status(200).send(result.rows))
+    .catch(err => res.status(502).send(err));
 })
 
 // Related Products
