@@ -41,24 +41,20 @@ app.get('/products/:product_id', (req, res) => {
 
   // Product Styles
 app.get('/products/:product_id/styles', (req, res) => {
-    /**
-     * Parameters:
-     *    product_id (integer) - Required ID of the Product requested
-     *
-     * Response status: 200 OK
-     */
+
   db.styles(req.params.product_id)
     .then(result => {
       // For Each style object
       let results = result.rows;
       for (var i = 0; i < results.length; i++) {
-        // replace photos and skus arrays with unique
+        // Make photos array of objects unique
         let uniquePhotos = _.uniqBy(results[i].photos, obj => obj["id"]);
         for (var j = 0; j < uniquePhotos.length; j++) {
           delete uniquePhotos[j]["id"];
           delete uniquePhotos[j]["styleid"];
         }
         results[i].photos = uniquePhotos;
+        // Replace skus array with object containing unique skus data
         let uniqueSkus = _.uniqBy(results[i].skus, obj => obj["id"]);
         let skus = {};
         for (var j = 0; j < uniqueSkus.length; j++) {
@@ -77,7 +73,7 @@ app.get('/products/:product_id/related', (req, res) => {
 
   db.related(req.params.product_id)
   .then(result => res.status(200).send(_.map(result.rows, 'related_product_id')))
-  .catch(err => res.status(502).send(err));
+  .catch(err => res.status(404).send(err));
 
 })
 
