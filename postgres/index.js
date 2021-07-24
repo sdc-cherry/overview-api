@@ -56,23 +56,23 @@ module.exports.styles = id => {
   //               GROUP BY s.id`;
 
   // GIVES DUPLICATED ARRAYS, BUT WORKABLE - 4 s
-  // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, JSON_AGG(p) AS photos, JSON_AGG(u) AS skus
-  //               FROM styles AS s
-  //                 LEFT JOIN photos AS p
-  //                   ON s.id=p.styleId
-  //                 INNER JOIN skus AS u
-  //                   ON s.id=u.styleId
-  //               WHERE productId=${id}
-  //               GROUP BY s.id`;
-
-  // Try replacing LEFT JOIN photos with LJ (qry statement to get styleid and array of objs)
-  let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, p.url, p.thumbnail_url, u.id AS sku_id, u.quantity, u.size
+  let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, JSON_AGG(p) AS photos, JSON_AGG(u) AS skus
                 FROM styles AS s
                   LEFT JOIN photos AS p
                     ON s.id=p.styleId
                   INNER JOIN skus AS u
                     ON s.id=u.styleId
-                WHERE productId=${id}`;
+                WHERE productId=${id}
+                GROUP BY s.id`;
+
+  // Try replacing LEFT JOIN photos with LJ (qry statement to get styleid and array of objs)
+  // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, p.url, p.thumbnail_url, u.id AS sku_id, u.quantity, u.size
+  //               FROM styles AS s
+  //                 LEFT JOIN photos AS p
+  //                   ON s.id=p.styleId
+  //                 INNER JOIN skus AS u
+  //                   ON s.id=u.styleId
+  //               WHERE productId=${id}`;
 
   // JUST STYLES
   // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style

@@ -48,7 +48,27 @@ app.get('/products/:product_id/styles', (req, res) => {
      * Response status: 200 OK
      */
   db.styles(req.params.product_id)
-    .then(result => res.status(200).send(result.rows))
+    .then(result => {
+      // For Each style object
+      let results = result.rows;
+      for (var i = 0; i < results.length; i++) {
+        // replace photos and skus arrays with unique
+        let uniquePhotos = _.uniqBy(results[i].photos, obj => obj["id"]);
+        for (var j = 0; j < uniquePhotos.length; j++) {
+          delete uniquePhotos[j]["id"];
+          delete uniquePhotos[j]["styleid"];
+        }
+        results[i].photos = uniquePhotos;
+        let uniqueSkus = _.uniqBy(results[i].skus, obj => obj["id"]);
+        let skus = {};
+        for (var j = 0; j < uniqueSkus.length; j++) {
+          skus[uniqueSkus[j]["id"]] = _.omit(uniqueSkus[j], ["id", "styleid"]);
+        }
+        results[i].skus = skus;
+      }
+      return results;
+    })
+    .then(results => res.status(200).send(results))
     .catch(err => res.status(502).send(err));
 })
 
