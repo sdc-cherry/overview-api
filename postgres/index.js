@@ -25,36 +25,6 @@ module.exports.info = id => {
 
 module.exports.styles = id => {
 
-  // JSON_OBJECT_AGG(quantity, size) -> quantity value is key and size - probably want when each sku obj built and need skus
-
-  // For each sku (id),
-    // want to construct an object with quantity and size properties
-
-  // Want object with all of the sku id: sku object properties
-
-  // let query = `SELECT JSON_OBJECT_AGG(quantity, size) AS test
-  //               FROM skus
-  //               WHERE styleID=1
-  //               GROUP BY styleID`
-  // let query = `SELECT id, JSON_OBJECT_AGG(quantity, size) AS test
-  //               FROM skus
-  //               WHERE styleID=1
-  //               GROUP BY id`
-
-  //sku data for single style id
-  // let query = `SELECT *
-  //               FROM skus
-  //               WHERE styleID=1
-  //               GROUP BY id`
-
-  // PHOTOS AS ARRAY OF OBJECT, BUT WITH EXTRA FIELDS
-  // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, JSON_AGG(p) AS photos
-  //               FROM styles AS s
-  //                 LEFT JOIN photos AS p
-  //                   ON s.id=p.styleId
-  //               WHERE productId=${id}
-  //               GROUP BY s.id`;
-
   // GIVES DUPLICATED ARRAYS, BUT WORKABLE - 4 s
   let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, JSON_AGG(p) AS photos, JSON_AGG(u) AS skus
                 FROM styles AS s
@@ -65,19 +35,6 @@ module.exports.styles = id => {
                 WHERE productId=${id}
                 GROUP BY s.id`;
 
-  // Try replacing LEFT JOIN photos with LJ (qry statement to get styleid and array of objs)
-  // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style, p.url, p.thumbnail_url, u.id AS sku_id, u.quantity, u.size
-  //               FROM styles AS s
-  //                 LEFT JOIN photos AS p
-  //                   ON s.id=p.styleId
-  //                 INNER JOIN skus AS u
-  //                   ON s.id=u.styleId
-  //               WHERE productId=${id}`;
-
-  // JUST STYLES
-  // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style
-  //               FROM styles AS s
-  //               WHERE productId=${id}`;
   return pool.query(query);
 };
 
