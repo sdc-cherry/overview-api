@@ -7,7 +7,7 @@ const pool = new Pool({
   database: config.DBNAME,
   password: config.DBTOKEN,
   port: 5432,
-})
+});
 
 module.exports.list = numResults => pool.query(`SELECT * FROM products LIMIT ${numResults}`);
 
@@ -78,7 +78,7 @@ module.exports.styles = id => {
   // let query = `SELECT s.id AS style_id, s.name, s.sale_price, s.original_price, s.default_style
   //               FROM styles AS s
   //               WHERE productId=${id}`;
-  return pool.query(query)
+  return pool.query(query);
 };
 
 module.exports.related = id => pool.query(`SELECT related_product_id FROM related WHERE current_product_id=${id}`);
