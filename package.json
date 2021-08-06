@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --forceExit",
     "start": "nodemon ./server/index.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "coverage": "jest --forceExit --coverage"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   },
   "homepage": "https://github.com/sdc-cherry/overview-api#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "express": "^4.17.1",
+    "lodash": "^4.17.21",
     "nodemon": "^2.0.12",
     "pg": "^8.6.0"
   },
