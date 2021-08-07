@@ -9,7 +9,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-module.exports.list = numResults => pool.query(`SELECT * FROM products LIMIT ${numResults}`);
+module.exports.list = (offset, count) => pool.query(`SELECT * FROM products LIMIT ${count} OFFSET ${offset}`);
 
 module.exports.info = id => {
   return pool.query(`SELECT * FROM products WHERE id=${id}`)
