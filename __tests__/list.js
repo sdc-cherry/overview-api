@@ -19,14 +19,16 @@ test('Valid request with no parameters should return array of 5 product objects'
     })
 })
 
-test('Valid request with parameters should return array of N product objects',  () => {
+test('Valid request with parameters should return array of product objects with length equal to count',  () => {
    return supertest(app).get('/products?page=2&count=8')
     .then(res => {
       expect(res.status).toEqual(200);
       expect(Array.isArray(res.body)).toBeTruthy();
-      expect(res.body.length).toEqual(16);
+      expect(res.body.length).toEqual(8);
     })
 })
+
+// Add test for correct pagination
 
 test('Request with invalid parameters should return an error of 400',  () => {
    return supertest(app).get('/products?pag=2&count=8')

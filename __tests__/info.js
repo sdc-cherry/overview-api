@@ -5,7 +5,7 @@ const supertest = require('supertest');
 
 
 test('Valid product id request should return ...',  () => {
-  return supertest(app).get('/products/1')
+  return supertest(app).get('/products/1000010')
   .then(res => {
     expect(res.status).toEqual(200);
     // expect(res.body).toBe(
@@ -20,3 +20,10 @@ test('Valid product id request should return ...',  () => {
     // );
   });
 });
+
+test('Should return a status of 502 for nonexistent product ID', () => {
+  return supertest(app).get('/products/1000012')
+    .then(res => {
+      expect(res.status).toEqual(502);
+    })
+})

@@ -18,13 +18,14 @@ app.get('/products', (req, res) => {
   } else {
 
     //  Grab parameters from req, revert to default. Try req.params if req.query doesn't work
-    let pages = req.query.page ? req.query.page : 1;
-    let count = req.query.count ? req.query.count : 5;
-    // Calculate number of results based on parameters (page * count)
-    let numResults = pages * count;
+    let page = req.query.page ? Number(req.query.page) : 1;
+    let count = req.query.count ? Number(req.query.count) : 5;
+    let startId = (page - 1) * count + 1;
+    let endId = startId + count - 1;
+    // let offset = (page - 1) * count;
     // Call db function to get products, based on parameters
     // Send back array of objects with products properties
-    db.list(numResults)
+    db.list(startId, endId)
       .then(results => res.status(200).send(results.rows))
       .catch(err => res.status(502).send(err));
   }

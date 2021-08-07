@@ -9,7 +9,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-module.exports.list = numResults => pool.query(`SELECT * FROM products LIMIT ${numResults}`);
+module.exports.list = (startId, endId) => pool.query(`SELECT * FROM products WHERE id BETWEEN ${startId} AND ${endId}`);
 
 module.exports.info = id => {
   return pool.query(`SELECT * FROM products WHERE id=${id}`)
