@@ -8,12 +8,12 @@ export let options = {
       rate: 1000,
       timeUnit: '1s',
       duration: '1m',
-      preAllocatedVUs: 50,
+      preAllocatedVUs: 40,
       maxVUs: 100
     }
   }
 };
 
 export default function () {
-  http.get('http://localhost:3000/products/999890');
+  http.get('http://localhost:3000/products/999655/related');
 }
