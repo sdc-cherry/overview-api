@@ -69,10 +69,9 @@ app.get('/products/:product_id/styles', (req, res) => {
           }
           results[i].skus = skus;
         } else {
-          results[i].skus = [];
+          results[i].skus = {};
         }
       }
-      console.log(results);
       return results;
     })
     .then(results => res.status(200).send(results))
