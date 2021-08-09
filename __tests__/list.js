@@ -37,11 +37,10 @@ test('Request with invalid parameters should return an error of 400',  () => {
     })
 })
 
-test('Request with with invalid connection parameters should return an error of 502',  () => {
+test('Request with invalid connection parameters should return an error of 404',  () => {
   return supertest(app).get('/product').auth('what','no')
    .then(res => {
      expect(res.status).toEqual(404);
    })
 })
-
 
