@@ -5,15 +5,15 @@ export let options = {
   scenarios: {
     open_model: {
       executor: 'constant-arrival-rate',
-      rate: 1,
+      rate: 1000,
       timeUnit: '1s',
       duration: '1m',
-      preAllocatedVUs: 1,
-      maxVUs: 10
+      preAllocatedVUs: 20,
+      maxVUs: 100
     }
   }
 };
 
 export default function () {
-  http.get('http://localhost:3000/products');
+  http.get('http://localhost:3000/products/999775/styles');
 }
