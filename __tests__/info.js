@@ -4,20 +4,12 @@ const app = require('../server/app');
 const supertest = require('supertest');
 
 
-test('Valid product id request should return ...',  () => {
+test('Valid request for product 1000010 should return an object with 4 features',  () => {
   return supertest(app).get('/products/1000010')
   .then(res => {
     expect(res.status).toEqual(200);
-    // expect(res.body).toBe(
-    //   expect.objectContaining({
-    //     "id": 1,
-    //     "name": "Camo Onesie",
-    //     "slogan": "Blend in to your crowd",
-    //     "category": "Jackets", "default_price": 140,
-    //     "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-    //     "features": [{"feature": "Fabric", "value": "Canvas"}, {"feature": "Buttons", "value": "Brass"}]
-    //   })
-    // );
+    expect(Array.isArray(res.body["features"])).toBeTruthy();
+    expect(res.body["features"].length).toEqual(4);
   });
 });
 

@@ -30,7 +30,7 @@ module.exports.styles = id => {
                 FROM styles AS s
                   LEFT JOIN photos AS p
                     ON s.id=p.styleId
-                  INNER JOIN skus AS u
+                  LEFT JOIN skus AS u
                     ON s.id=u.styleId
                 WHERE productId=${id}
                 GROUP BY s.id`;

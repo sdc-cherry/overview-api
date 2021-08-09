@@ -45,23 +45,32 @@ app.get('/products/:product_id/styles', (req, res) => {
 
   db.styles(req.params.product_id)
     .then(result => {
+      // console.log(result.rows)
       // For Each style object
       let results = result.rows;
       for (var i = 0; i < results.length; i++) {
-        // Make photos array of objects unique
-        let uniquePhotos = _.uniqBy(results[i].photos, obj => obj["id"]);
-        for (var j = 0; j < uniquePhotos.length; j++) {
-          delete uniquePhotos[j]["id"];
-          delete uniquePhotos[j]["styleid"];
+        if (results[i].photos[0]) {
+          // Make photos array of objects unique
+          let uniquePhotos = _.uniqBy(results[i].photos, obj => obj["id"]);
+          for (var j = 0; j < uniquePhotos.length; j++) {
+            delete uniquePhotos[j]["id"];
+            delete uniquePhotos[j]["styleid"];
+          }
+          results[i].photos = uniquePhotos;
+        } else {
+          results[i].photos = [];
         }
-        results[i].photos = uniquePhotos;
-        // Replace skus array with object containing unique skus data
-        let uniqueSkus = _.uniqBy(results[i].skus, obj => obj["id"]);
-        let skus = {};
-        for (var j = 0; j < uniqueSkus.length; j++) {
-          skus[uniqueSkus[j]["id"]] = _.omit(uniqueSkus[j], ["id", "styleid"]);
+        if (results[i].skus[0]) {
+          // Replace skus array with object containing unique skus data
+          let uniqueSkus = _.uniqBy(results[i].skus, obj => obj["id"]);
+          let skus = {};
+          for (var j = 0; j < uniqueSkus.length; j++) {
+            skus[uniqueSkus[j]["id"]] = _.omit(uniqueSkus[j], ["id", "styleid"]);
+          }
+          results[i].skus = skus;
+        } else {
+          results[i].skus = {};
         }
-        results[i].skus = skus;
       }
       return results;
     })
