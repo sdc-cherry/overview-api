@@ -28,7 +28,23 @@ test('Valid request with parameters should return array of product objects with 
     })
 })
 
-// Add test for correct pagination
+test('Request for second-to-last page should return 10 products',  () => {
+   return supertest(app).get('/products?page=100001&count=10')
+    .then(res => {
+      expect(res.status).toEqual(200);
+      expect(Array.isArray(res.body)).toBeTruthy();
+      expect(res.body.length).toEqual(10);
+    })
+})
+
+test('Request for incomplete (final) page should still return any existing products',  () => {
+   return supertest(app).get('/products?page=100002&count=10')
+    .then(res => {
+      expect(res.status).toEqual(200);
+      expect(Array.isArray(res.body)).toBeTruthy();
+      expect(res.body.length).toEqual(1);
+    })
+})
 
 test('Request with invalid parameters should return an error of 400',  () => {
    return supertest(app).get('/products?pag=2&count=8')
