@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
-const db = require('../postgres/index');
+const db = require('./queries');
 
 const app = express();
 
