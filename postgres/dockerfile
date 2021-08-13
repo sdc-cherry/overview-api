@@ -1,7 +1,6 @@
 
 FROM postgres
 
-RUN mkdir /db
+COPY schema.docker.example.sql /docker-entrypoint-initdb.d/schema.docker.example.sql
 
-COPY schema.sql /db
-
+# COPY ../raw/cart.csv /var/lib/postgresql/cart.csv
