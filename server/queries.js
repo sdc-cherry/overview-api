@@ -1,5 +1,4 @@
 const { Pool, Client } = require('pg');
-const Promise = require('bluebird');
 const config = require('../config.js');
 
 const pool = new Pool({
