@@ -1,0 +1,7 @@
+
+FROM postgres
+
+RUN mkdir /db
+
+COPY schema.sql /db
+
