@@ -10,3 +10,5 @@ config.js
 # REST Client requests
 api-requests.js
 api-requests.http
+
+postgres/sdcdata.sql
