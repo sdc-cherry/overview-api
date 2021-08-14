@@ -1,6 +1,6 @@
 
 FROM postgres
 
-COPY sdctest.sql /docker-entrypoint-initdb.d/sdctest.sql
+# COPY sdcdata.sql /docker-entrypoint-initdb.d/sdcdata.sql
 
 # COPY ../raw/cart.csv /var/lib/postgresql/cart.csv
