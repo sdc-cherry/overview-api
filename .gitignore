@@ -16,3 +16,4 @@ postgres/sdcdata.sql
 .env
 
 docker-compose.yml
+dockerfile
