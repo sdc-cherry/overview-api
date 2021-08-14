@@ -12,3 +12,7 @@ api-requests.js
 api-requests.http
 
 postgres/sdcdata.sql
+
+.env
+
+docker-compose.yml
