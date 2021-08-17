@@ -5,7 +5,8 @@ const pool = new Pool({
   user: config.DBUSER,
   database: config.DBNAME,
   password: config.DBTOKEN,
-  port: 5432,
+  host: 'ec2-54-157-189-125.compute-1.amazonaws.com',
+  port: 5438,
 });
 
 module.exports.list = (startId, endId) => pool.query(`SELECT * FROM products WHERE id BETWEEN ${startId} AND ${endId}`);

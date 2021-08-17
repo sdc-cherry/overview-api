@@ -1,0 +1,6 @@
+
+FROM postgres
+
+# COPY sdcdata.sql /docker-entrypoint-initdb.d/sdcdata.sql
+
+# COPY ../raw/cart.csv /var/lib/postgresql/cart.csv

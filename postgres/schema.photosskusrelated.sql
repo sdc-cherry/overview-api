@@ -1,10 +1,4 @@
 
--- NEED TO USE ALTER TABLE (IF EXISTS?)...DROP CONSTRAINT
-
-ALTER TABLE IF EXISTS features
-  DROP CONSTRAINT IF EXISTS fk_feat;
-ALTER TABLE IF EXISTS styles
-  DROP CONSTRAINT IF EXISTS fk_style;
 ALTER TABLE IF EXISTS photos
   DROP CONSTRAINT IF EXISTS fk_photo;
 ALTER TABLE IF EXISTS skus
@@ -14,49 +8,12 @@ ALTER TABLE IF EXISTS related
 ALTER TABLE IF EXISTS related
   DROP CONSTRAINT IF EXISTS fk_related;
 
-
-DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS features;
-DROP TABLE IF EXISTS styles;
 DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS skus;
 DROP TABLE IF EXISTS related;
 
 
 -- CREATE SCHEMA sdc
-CREATE TABLE products (
-  id INTEGER PRIMARY KEY,
-  name VARCHAR(100),
-  slogan VARCHAR(255),
-  description TEXT,
-  category VARCHAR(100),
-  default_price INTEGER
-);
-
-\COPY products from '~/Documents/HR/sdc/overview-api/raw/product.csv' delimiter ',' csv header;
-
-CREATE TABLE features (
-  id INTEGER PRIMARY KEY,
-  product_id INTEGER,
-  feature VARCHAR(75),
-  value VARCHAR(75),
-  CONSTRAINT fk_feat FOREIGN KEY(product_id) REFERENCES products(id) ON DELETE CASCADE
-);
-
-\COPY features from '~/Documents/HR/sdc/overview-api/raw/features.csv' delimiter ',' csv header;
-
-CREATE TABLE styles (
-  id INTEGER PRIMARY KEY,
-  productId INTEGER,
-  name VARCHAR(75),
-  -- sale_price INTEGER DEFAULT NULL,
-  sale_price VARCHAR(12),
-  original_price INTEGER,
-  default_style BOOLEAN,
-  CONSTRAINT fk_style FOREIGN KEY(productId) REFERENCES products(id) ON DELETE CASCADE
-);
-
-\COPY styles from '~/Documents/HR/sdc/overview-api/raw/styles.csv' delimiter ',' csv header;
 
 CREATE TABLE photos (
   id INTEGER PRIMARY KEY,
@@ -71,7 +28,7 @@ CREATE TABLE photos (
 CREATE TABLE skus (
   id INTEGER PRIMARY KEY,
   styleId INTEGER,
-  size VARCHAR(10),
+  size VARCHAR(6),
   quantity SMALLINT,
   CONSTRAINT fk_sku FOREIGN KEY(styleId) REFERENCES styles(id) ON DELETE CASCADE
 );
