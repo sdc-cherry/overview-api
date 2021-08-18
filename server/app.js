@@ -2,11 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
 const db = require('./queries');
+const config = require('../config.js');
 
 const app = express();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
+
+// For stress testing under loader.io
+app.get('/' + config.loaderkey, (req, res) => {
+  res.send(config.loaderkey);
+})
+
 
 // List Products
 app.get('/products', (req, res) => {
